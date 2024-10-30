@@ -48,13 +48,10 @@ public class FrmCliente extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPropietarios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtValor = new javax.swing.JTextField();
-        cboBuscar = new javax.swing.JComboBox<>();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnExportar = new javax.swing.JButton();
-        btnImportar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         registroPropietario = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -97,28 +94,15 @@ public class FrmCliente extends javax.swing.JPanel {
         listaPropietario.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 671, 257));
 
         jLabel1.setText("Buscar por:");
-        listaPropietario.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 66, -1));
+        listaPropietario.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 66, -1));
 
-        jLabel2.setText("Valor:");
-        listaPropietario.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 9, 37, -1));
-
-        txtValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorActionPerformed(evt);
-            }
-        });
-        listaPropietario.add(txtValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 6, 86, -1));
-
-        cboBuscar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        listaPropietario.add(cboBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 6, 80, -1));
-
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Agregar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        listaPropietario.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 6, -1, -1));
+        listaPropietario.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +110,7 @@ public class FrmCliente extends javax.swing.JPanel {
                 btnBuscarActionPerformed(evt);
             }
         });
-        listaPropietario.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 6, -1, -1));
+        listaPropietario.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         btnExportar.setText("Exportar");
         btnExportar.addActionListener(new java.awt.event.ActionListener() {
@@ -134,15 +118,8 @@ public class FrmCliente extends javax.swing.JPanel {
                 btnExportarActionPerformed(evt);
             }
         });
-        listaPropietario.add(btnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 6, -1, -1));
-
-        btnImportar.setText("Importar");
-        btnImportar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImportarActionPerformed(evt);
-            }
-        });
-        listaPropietario.add(btnImportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(595, 6, -1, -1));
+        listaPropietario.add(btnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
+        listaPropietario.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 230, 20));
 
         Registrarxd.addTab("Lista", listaPropietario);
 
@@ -242,10 +219,6 @@ public class FrmCliente extends javax.swing.JPanel {
         add(Registrarxd, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorActionPerformed
-
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         Registrarxd.setSelectedComponent(registroPropietario);
     }//GEN-LAST:event_btnRegistrarActionPerformed
@@ -257,10 +230,6 @@ public class FrmCliente extends javax.swing.JPanel {
     private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
         exportar();
     }//GEN-LAST:event_btnExportarActionPerformed
-
-    private void btnImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportarActionPerformed
-        importar();
-    }//GEN-LAST:event_btnImportarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
   // Obtener los textos de los campos
@@ -432,14 +401,11 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnImportar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cboBuscar;
     private javax.swing.JComboBox<String> cboTipodocumento;
     private com.toedter.calendar.JDateChooser cbofecha;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -448,6 +414,7 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel listaPropietario;
     private javax.swing.JPanel registroPropietario;
     private javax.swing.JTable tblPropietarios;
@@ -456,7 +423,6 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
     private javax.swing.JTextField txtNdocumento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
      private void agregar() {
@@ -536,36 +502,6 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
         }
     }
 
-    private void importar() {
-    JFileChooser fileChooser = new JFileChooser("C:\\Users\\JOSEPH ROJAS\\OneDrive\\Documentos\\NetBeansProjects\\Interfaz_de_poo\\src\\Repositorio");
-    fileChooser.setDialogTitle("Seleccione un archivo de texto");
-    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Archivos de texto", "txt"));
-
-    int userSelection = fileChooser.showOpenDialog(this);
-
-    if (userSelection == JFileChooser.APPROVE_OPTION) {
-        File archivoSeleccionado = fileChooser.getSelectedFile();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(archivoSeleccionado))) {
-            String linea;
-            DefaultTableModel modelo = (DefaultTableModel) tblPropietarios.getModel();
-            modelo.setRowCount(0); // Limpiar la tabla antes de importar nuevos datos
-
-            while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(",");
-                if (datos.length == modelo.getColumnCount()) { // Verificar que la línea tenga el formato correcto
-                    modelo.addRow(datos);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Formato de archivo CSV incorrecto.", "Error", JOptionPane.ERROR_MESSAGE);
-                    return; // Salir del método si hay un error en el formato
-                }
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al importar los datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    }
 }
     
 
