@@ -52,6 +52,7 @@ public class FrmCliente extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JButton();
         btnExportar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        btnOrdenar = new javax.swing.JButton();
         registroPropietario = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -118,8 +119,11 @@ public class FrmCliente extends javax.swing.JPanel {
                 btnExportarActionPerformed(evt);
             }
         });
-        listaPropietario.add(btnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
+        listaPropietario.add(btnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
         listaPropietario.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 230, 20));
+
+        btnOrdenar.setText("Ordenar");
+        listaPropietario.add(btnOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
 
         Registrarxd.addTab("Lista", listaPropietario);
 
@@ -212,7 +216,7 @@ public class FrmCliente extends javax.swing.JPanel {
             }
         });
         registroPropietario.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 209, 271, -1));
-        registroPropietario.add(cbofecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 260, -1));
+        registroPropietario.add(cbofecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 270, -1));
 
         Registrarxd.addTab("Registro", registroPropietario);
 
@@ -401,6 +405,7 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnOrdenar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> cboTipodocumento;
