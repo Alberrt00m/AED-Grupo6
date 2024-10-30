@@ -105,7 +105,7 @@ public class FrmVehiculo extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ListaLayout.setVerticalGroup(
             ListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,7 +119,7 @@ public class FrmVehiculo extends javax.swing.JFrame {
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lista", Lista);
@@ -130,7 +130,42 @@ public class FrmVehiculo extends javax.swing.JFrame {
 
         jLabel8.setText("Placa:");
 
+        txtMarca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMarcaKeyTyped(evt);
+            }
+        });
+
+        txtPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPlacaKeyTyped(evt);
+            }
+        });
+
+        txtpropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpropietarioActionPerformed(evt);
+            }
+        });
+        txtpropietario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtpropietarioKeyTyped(evt);
+            }
+        });
+
         jLabel9.setText("Año:");
+
+        txtAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAñoKeyTyped(evt);
+            }
+        });
+
+        txtModelo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtModeloKeyTyped(evt);
+            }
+        });
 
         jLabel10.setText("Modelo:");
 
@@ -215,6 +250,42 @@ public class FrmVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String propietario = txtpropietario.getText().trim();
+        String placa = txtPlaca.getText().trim();
+        String marca = txtMarca.getText().trim();
+        String modelo = txtModelo.getText().trim();
+        String año = txtAño.getText().trim();
+        if (propietario.isEmpty()||placa.isEmpty()||marca.isEmpty()||modelo.isEmpty()||año.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (propietario.length() < 3) {
+            JOptionPane.showMessageDialog(null, "El nombre del propietario debe de tener al menos 3 caracteres.");
+            return; 
+        }
+        
+        if (placa.length() < 6 || placa.length() > 8) {
+            JOptionPane.showMessageDialog(this, "La placa esta mal >:v.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (marca.length() < 3) {
+            JOptionPane.showMessageDialog(null, "La marca debe de tener al menos 3 caracteres.");
+            return; 
+        }
+
+        if (modelo.length() < 3) {
+            JOptionPane.showMessageDialog(null, "El modelo debe de tener 3 caracteres como minimo .");
+            return; 
+        }
+        
+        if (año.length() != 4) {
+            JOptionPane.showMessageDialog(this, "En el año son solo 4 digitos!!!!!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
         agregar();
         jTabbedPane1.setSelectedComponent(Lista);
         JOptionPane.showMessageDialog(null, "Vehiculo registrado correctamente.");
@@ -231,6 +302,38 @@ public class FrmVehiculo extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
        buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtpropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpropietarioActionPerformed
+
+    }//GEN-LAST:event_txtpropietarioActionPerformed
+
+    private void txtpropietarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpropietarioKeyTyped
+        char c  = evt.getKeyChar();
+        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
+    }//GEN-LAST:event_txtpropietarioKeyTyped
+
+    private void txtPlacaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPlacaKeyTyped
+        char c  = evt.getKeyChar();
+        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
+    }//GEN-LAST:event_txtPlacaKeyTyped
+
+    private void txtMarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMarcaKeyTyped
+        char c  = evt.getKeyChar();
+        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
+    }//GEN-LAST:event_txtMarcaKeyTyped
+
+    private void txtModeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtModeloKeyTyped
+        char c  = evt.getKeyChar();
+        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
+    }//GEN-LAST:event_txtModeloKeyTyped
+
+    private void txtAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAñoKeyTyped
+        if (txtAño.getText().trim().length() == 4) {
+            evt.consume();
+        }
+        char xc = evt.getKeyChar();
+        if(xc<'0'||xc>'9') evt.consume();
+    }//GEN-LAST:event_txtAñoKeyTyped
 
     /**
      * @param args the command line arguments
