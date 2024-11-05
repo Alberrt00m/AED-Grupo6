@@ -1,22 +1,14 @@
-
 package GUI;
 
-import EDE.ArregloCliente;
 import Clases.Cliente;
+import EDE.ArregloCliente;
 import com.formdev.flatlaf.intellijthemes.FlatCyanLightIJTheme;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Vector;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,12 +16,8 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author JOSEPH ROJAS
  */
-public class FrmCliente extends javax.swing.JPanel {
-
-    /**
-     * Creates new form FrmPropietario
-     */
-     ArregloCliente datos = new ArregloCliente(10);
+public class FrmCliente extends javax.swing.JFrame {
+    ArregloCliente datos = new ArregloCliente(100);
     public FrmCliente() {
         initComponents();
     }
@@ -50,7 +38,6 @@ public class FrmCliente extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        btnExportar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         btnOrdenar = new javax.swing.JButton();
         registroPropietario = new javax.swing.JPanel();
@@ -72,9 +59,7 @@ public class FrmCliente extends javax.swing.JPanel {
         txtCorreo = new javax.swing.JTextField();
         cbofecha = new com.toedter.calendar.JDateChooser();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        listaPropietario.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tblPropietarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,14 +73,8 @@ public class FrmCliente extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(tblPropietarios);
-        if (tblPropietarios.getColumnModel().getColumnCount() > 0) {
-            tblPropietarios.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        listaPropietario.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 671, 257));
 
         jLabel1.setText("Buscar por:");
-        listaPropietario.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 66, -1));
 
         btnRegistrar.setText("Agregar");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +82,6 @@ public class FrmCliente extends javax.swing.JPanel {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        listaPropietario.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,19 +89,43 @@ public class FrmCliente extends javax.swing.JPanel {
                 btnBuscarActionPerformed(evt);
             }
         });
-        listaPropietario.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
-
-        btnExportar.setText("Exportar");
-        btnExportar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportarActionPerformed(evt);
-            }
-        });
-        listaPropietario.add(btnExportar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
-        listaPropietario.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 230, 20));
 
         btnOrdenar.setText("Ordenar");
-        listaPropietario.add(btnOrdenar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
+
+        javax.swing.GroupLayout listaPropietarioLayout = new javax.swing.GroupLayout(listaPropietario);
+        listaPropietario.setLayout(listaPropietarioLayout);
+        listaPropietarioLayout.setHorizontalGroup(
+            listaPropietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listaPropietarioLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnRegistrar)
+                .addGap(46, 46, 46)
+                .addComponent(btnBuscar)
+                .addGap(63, 63, 63)
+                .addComponent(btnOrdenar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(listaPropietarioLayout.createSequentialGroup()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        listaPropietarioLayout.setVerticalGroup(
+            listaPropietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listaPropietarioLayout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addGroup(listaPropietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(listaPropietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(btnRegistrar)
+                        .addComponent(btnBuscar))
+                    .addComponent(btnOrdenar))
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         Registrarxd.addTab("Lista", listaPropietario);
 
@@ -154,13 +156,13 @@ public class FrmCliente extends javax.swing.JPanel {
         registroPropietario.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 237, -1, -1));
 
         jLabel3.setText("Nombre: ");
-        registroPropietario.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 17, 58, -1));
+        registroPropietario.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 58, -1));
 
         jLabel4.setText("Apellido:");
-        registroPropietario.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 58, -1));
+        registroPropietario.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 58, -1));
 
         jLabel5.setText("Tipo documento:");
-        registroPropietario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 82, -1, -1));
+        registroPropietario.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -185,16 +187,16 @@ public class FrmCliente extends javax.swing.JPanel {
         registroPropietario.add(cboTipodocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 76, 270, -1));
 
         jLabel6.setText("Fecha de nacimiento: ");
-        registroPropietario.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 116, -1, -1));
+        registroPropietario.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         jLabel7.setText("Número de documento:");
-        registroPropietario.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 144, 134, -1));
+        registroPropietario.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 140, 130, -1));
 
         jLabel8.setText("Número de teléfono:");
-        registroPropietario.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 178, 119, -1));
+        registroPropietario.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 119, -1));
 
         jLabel9.setText("Correo electrónico:");
-        registroPropietario.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 212, 111, -1));
+        registroPropietario.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 111, -1));
 
         txtNdocumento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -216,11 +218,34 @@ public class FrmCliente extends javax.swing.JPanel {
             }
         });
         registroPropietario.add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 209, 271, -1));
+
+        cbofecha.setDateFormatString("dd -MM -yyyy");
         registroPropietario.add(cbofecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 270, -1));
 
         Registrarxd.addTab("Registro", registroPropietario);
 
-        add(Registrarxd, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 737, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Registrarxd, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 342, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Registrarxd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
@@ -231,118 +256,107 @@ public class FrmCliente extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
-        exportar();
-    }//GEN-LAST:event_btnExportarActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-  // Obtener los textos de los campos
-String apellido = txtApellido.getText().trim();
-String nombre = txtNombre.getText().trim();
-String telefono = txtTelefono.getText().trim();
-String correo = txtCorreo.getText().trim();
-String nDocumento = txtNdocumento.getText().trim();
-String tipoDocumento = (String) cboTipodocumento.getSelectedItem();
-String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        // Obtener los textos de los campos
+        String apellido = txtApellido.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String telefono = txtTelefono.getText().trim();
+        String correo = txtCorreo.getText().trim();
+        String nDocumento = txtNdocumento.getText().trim();
+        String tipoDocumento = (String) cboTipodocumento.getSelectedItem();
+        String emailRegex = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 
-// vserificar que todos los campos estén completos
-if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || correo.isEmpty() || nDocumento.isEmpty() || cbofecha.getDate() == null) {
-    JOptionPane.showMessageDialog(null, "Completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
-    return; // Detiene la ejecución si hay campos vacíos
-}
+        // vserificar que todos los campos estén completos
+        if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || correo.isEmpty() || nDocumento.isEmpty() || cbofecha.getDate() == null) {
+            JOptionPane.showMessageDialog(null, "Completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si hay campos vacíos
+        }
 
-// verificar la fecha de nacimiento
-Date fechaNacimientoDate = cbofecha.getDate();
-if (fechaNacimientoDate == null) {
-    JOptionPane.showMessageDialog(null, "Seleccione una fecha de nacimiento.", "Error", JOptionPane.ERROR_MESSAGE);
-    return; // Detiene la ejecución si no se ha seleccionado una fecha de nacimiento
-}
+        // verificar la fecha de nacimiento
+        Date fechaNacimientoDate = cbofecha.getDate();
+        if (fechaNacimientoDate == null) {
+            JOptionPane.showMessageDialog(null, "Seleccione una fecha de nacimiento.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si no se ha seleccionado una fecha de nacimiento
+        }
 
-LocalDate fechaNacimiento = fechaNacimientoDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-LocalDate fechaActual = LocalDate.now();
-Period periodo = Period.between(fechaNacimiento, fechaActual);
+        LocalDate fechaNacimiento = fechaNacimientoDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate fechaActual = LocalDate.now();
+        Period periodo = Period.between(fechaNacimiento, fechaActual);
 
-// Verificar la longitud del nombre
-if (nombre.length() < 3) {
-    JOptionPane.showMessageDialog(null, "El nombre debe tener al menos 3 caracteres.");
-    return; // Detiene la ejecución si el nombre es inválido
-}
+        if (nombre.length() < 3) {
+            JOptionPane.showMessageDialog(null, "El nombre debe tener al menos 3 caracteres.");
+            return; // Detiene la ejecución si el nombre es inválido
+        }
 
-//longitud del apellido
-if (apellido.length() < 4) {
-    JOptionPane.showMessageDialog(null, "El apellido debe tener al menos 4 caracteres.");
-    return; // Detiene la ejecución si el apellido es inválido
-}
-
-// Verificar que solo ingresen 9 números exactos
-if (telefono.length() != 9) {
-    JOptionPane.showMessageDialog(this, "El número de teléfono debe tener exactamente 9 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-    return;
-}
-
-// Verificar formato del correo electrónico
-if (!correo.matches(emailRegex)) {
-    JOptionPane.showMessageDialog(null, "Ingrese una dirección de correo electrónico válida.", "Error", JOptionPane.ERROR_MESSAGE);
-    return; // Detiene la ejecución si el correo electrónico es inválido
-}
-
-// Verificar si es mayor de edad
-if (periodo.getYears() < 18) {
-    JOptionPane.showMessageDialog(null, "No se puede registrar porque es menor de edad.", "Error", JOptionPane.ERROR_MESSAGE);
-    return; // Detiene la ejecución si la persona es menor de 18 años
-}
-
-// Verificar tipo y número de documento
-switch (tipoDocumento) {
-    case "DNI":
-        if (nDocumento.length() != 8) {
-            JOptionPane.showMessageDialog(this, "Ingrese un número de DNI válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (apellido.length() < 4) {
+            JOptionPane.showMessageDialog(null, "El apellido debe tener al menos 4 caracteres.");
             return;
         }
-        break;
-    case "CARNÉ MILITAR Y POLICIAL":
-        if (nDocumento.length() != 8) {
-            JOptionPane.showMessageDialog(this, "Ingrese un número de Carné Militar y Policial válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (telefono.length() != 9) {
+            JOptionPane.showMessageDialog(this, "El número de teléfono debe tener exactamente 9 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        break;
-    case "RUC":
-        if (nDocumento.length() != 11) {
-            JOptionPane.showMessageDialog(this, "Ingrese un número de RUC válido.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        break;
-    case "PASAPORTE":
-        if (nDocumento.length() != 20) {
-            JOptionPane.showMessageDialog(this, "Ingrese un número de Pasaporte válido.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        break;
-    case "CARNÉ DE EXTRANJERÍA  ":
-        if (nDocumento.length() != 20) {
-            JOptionPane.showMessageDialog(this, "Ingrese un número de Carnet valido", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        break;
-    case "PTP":
-        if (nDocumento.length() != 20) {
-            JOptionPane.showMessageDialog(this, "Ingrese un número de PTP valido.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        break;
-    default:
-        JOptionPane.showMessageDialog(this, "Seleccione un tipo de documento válido.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-}
 
+        // Verificar formato del correo electrónico
+        if (!correo.matches(emailRegex)) {
+            JOptionPane.showMessageDialog(null, "Ingrese una dirección de correo electrónico válida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si el correo electrónico es inválido
+        }
 
+        // Verificar si es mayor de edad
+        if (periodo.getYears() < 18) {
+            JOptionPane.showMessageDialog(null, "No se puede registrar porque es menor de edad.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Detiene la ejecución si la persona es menor de 18 años
+        }
 
-// Si todas las validaciones pasan, procede con el guardado
-agregar();
-listar();  // Listar los usuarios después de agregar uno nuevo
-Registrarxd.setSelectedComponent(listaPropietario);
-JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
+        // Verificar tipo y número de documento
+        switch (tipoDocumento) {
+            case "DNI":
+            if (nDocumento.length() != 8) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número de DNI válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            break;
+            case "CARNÉ MILITAR Y POLICIAL":
+            if (nDocumento.length() != 8) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número de Carné Militar y Policial válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            break;
+            case "RUC":
+            if (nDocumento.length() != 11) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número de RUC válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            break;
+            case "PASAPORTE":
+            if (nDocumento.length() != 20) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número de Pasaporte válido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            break;
+            case "CARNÉ DE EXTRANJERÍA  ":
+            if (nDocumento.length() != 20) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número de Carnet valido", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            break;
+            case "PTP":
+            if (nDocumento.length() != 20) {
+                JOptionPane.showMessageDialog(this, "Ingrese un número de PTP valido.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            break;
+            default:
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de documento válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        // Si todas las validaciones pasan, procede con el guardado
+        agregar();
+        listar();  // Listar los usuarios después de agregar uno nuevo
+        Registrarxd.setSelectedComponent(listaPropietario);
+        JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -353,16 +367,29 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
 
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c  = evt.getKeyChar();
+        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
+    }//GEN-LAST:event_txtNombreKeyTyped
+
     private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
+        char c  = evt.getKeyChar();
+        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
+    }//GEN-LAST:event_txtApellidoKeyTyped
+
+    private void txtNdocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNdocumentoKeyTyped
+        char v = evt.getKeyChar();
+        if (v < '0' || v > '9'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNdocumentoKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-     if (txtTelefono.getText().trim().length() == 9) {
+        if (txtTelefono.getText().trim().length() == 9) {
             evt.consume();
         }
         char v = evt.getKeyChar();
@@ -371,26 +398,15 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
-    private void txtNdocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNdocumentoKeyTyped
-           char v = evt.getKeyChar();
-        if (v < '0' || v > '9'){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtNdocumentoKeyTyped
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        char c  = evt.getKeyChar();
-        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
-    }//GEN-LAST:event_txtNombreKeyTyped
-
-    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
-       char c  = evt.getKeyChar();
-        if((c<'a'||c>'z') && (c<'A')|c>'Z') evt.consume();
-    }//GEN-LAST:event_txtApellidoKeyTyped
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
-
-            FlatCyanLightIJTheme.setup();
+        FlatCyanLightIJTheme.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -399,11 +415,11 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane Registrarxd;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnExportar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnOrdenar;
     private javax.swing.JButton btnRegistrar;
@@ -430,8 +446,7 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 
-     private void agregar() {
-        // se crea el objeto
+    private void agregar() {
         Cliente xd = new Cliente();
         // asignamos los datos
         xd.setNombre(txtNombre.getText());
@@ -443,20 +458,15 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
         xd.setEmail(txtCorreo.getText());
         // agrega al propietario al arreglo de datos
         datos.agregarPropietario(xd);
-        limpiar();
         listar();
+        limpiar();
     }
-    
+
     private void listar() {
-    // Obtener los datos de los propietarios
       Cliente[] aux = datos.getElementos();
       DefaultTableModel dtm = (DefaultTableModel) tblPropietarios.getModel();
-
-      // Limpiar la tabla antes de cargar nuevos datos
       dtm.setRowCount(0);
-
       SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy"); // Formato de fecha
-
       for (int i = 0; i < datos.getIndice(); i++) {
           Cliente propietario = aux[i];
           Vector<Object> w = new Vector<>();
@@ -464,8 +474,6 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
           w.add(propietario.getNombre());
           w.add(propietario.getApellido());
           w.add(propietario.getTipodocumento());
-
-          // Formatear fecha de nacimiento si no es null
           String fechaFormateada = propietario.getFechaNacimiento() != null 
                   ? sdf.format(propietario.getFechaNacimiento()) 
                   : "";
@@ -478,8 +486,7 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
           dtm.addRow(w);
       }
     }
-    
-    
+
     private void limpiar() {
         txtNombre.setText("");
         txtApellido.setText("");
@@ -489,26 +496,14 @@ JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
         txtTelefono.setText("");
         txtCorreo.setText("");
     }
-    private void exportar() {
-             try (BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\JOSEPH ROJAS\\OneDrive\\Documentos\\NetBeansProjects\\Interfaz_de_poo\\src\\Repositorio\\Propietario.txt"))) {
-
-            // Obtener los datos de la tabla
-            DefaultTableModel dtm = (DefaultTableModel) tblPropietarios.getModel();
-            int filas = dtm.getRowCount();
-
-            // Escribir cada fila de la tabla en el archivo CSV
-            for (int i = 0; i < filas; i++) {
-                bw.write(dtm.getValueAt(i, 0) + "," + dtm.getValueAt(i, 1) + "," + dtm.getValueAt(i, 2) + "," + dtm.getValueAt(i, 3) + "," + dtm.getValueAt(i, 4) + "," + dtm.getValueAt(i, 5) + "," + dtm.getValueAt(i, 6)+ "," + dtm.getValueAt(i, 7) +"," + "\n");
-            }
-
-            JOptionPane.showMessageDialog(this, "Datos exportados correctamente.");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Error al exportar los datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+    
+    public String[] obtenerNombresPropietarios() {
+    DefaultTableModel modelo = (DefaultTableModel) tblPropietarios.getModel();
+    int rowCount = modelo.getRowCount();
+    String[] nombres = new String[rowCount];
+    for (int i = 0; i < rowCount; i++) {
+        nombres[i] = (String) modelo.getValueAt(i, 1); // La columna de nombres (segunda columna, índice 1)
     }
-
+    return nombres;
 }
-    
-
-    
-    
+}

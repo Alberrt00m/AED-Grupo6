@@ -15,13 +15,13 @@ public class Vehiculo {
     private String año;
     private String propietario;
 
-        public Vehiculo(int ID, String marca, String placa ,String modelo, String año,String propietario) {
+    public Vehiculo( String propietario, String placa ,String marca,String modelo, String año) {
         this.ID = generarID();
-        this.marca = marca;
+        this.propietario = propietario;
         this.placa = placa;
+        this.marca = marca;        
         this.modelo = modelo;
         this.año = año;
-        this.propietario = propietario;
     }
     
     public Vehiculo() {
@@ -44,7 +44,7 @@ public class Vehiculo {
     public String getID() {
         return ID;
     }
-
+    
     public void setID(String ID) {
         this.ID = ID;
     }
@@ -81,4 +81,13 @@ public class Vehiculo {
         this.propietario = propietario;
     }
 
+    public Object[] toTableRow() {
+        return new Object[] { 
+            this.getID(),
+            this.propietario, 
+            this.placa,
+            this.marca, 
+            this.modelo, 
+            this.año };
+    }
 }
